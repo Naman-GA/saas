@@ -79,7 +79,7 @@ exports.signup = async (req, res) => {
 
 exports.signin = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
-  console.log(user);
+  // console.log(user);
   try {
     if (user && bcrypt.compareSync(req.body.password, user.password)) {
       return res.json({
@@ -146,9 +146,9 @@ exports.getme = async (req, res) => {
     }
     const token = authHeader.split(" ")[1];
     const data = await jwtDecode(token);
-    console.log(data, "nytj");
+    // console.log(data, "nytj");
     let user = await User.find({ id: data.id });
-    console.log(user[0].id);
+    // console.log(user[0].id);
     return res.json({
       status: true,
       content: {

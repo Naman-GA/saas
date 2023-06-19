@@ -8,14 +8,14 @@ exports.addMember = async (req, res) => {
   try {
     const { community, user, role } = req.body;
 
-    console.log(community, user, role);
+    // console.log(community, user, role);
 
     const authHeader = req.headers.authorization;
     const token = authHeader.split(" ")[1];
     const data = await jwtDecode(token);
     const adminid = data.id;
 
-    console.log(adminid);
+    // console.log(adminid);
 
     const [communitie, userValidate, roleValidate] = await Promise.all([
       Community.findOne({ id: community }),
@@ -27,7 +27,7 @@ exports.addMember = async (req, res) => {
     console.log(userValidate);
     console.log(roleValidate);
 
-    console.log(adminid, communitie.owner);
+    // console.log(adminid, communitie.owner);
 
     if (!communitie || !userValidate || !roleValidate) {
       const errors = [];

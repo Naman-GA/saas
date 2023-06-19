@@ -10,7 +10,7 @@ exports.signin = async (req, res) => {
     let authHeader = req.headers.authorization;
     const token = authHeader.split(" ")[1];
     const data = await jwtDecode(token);
-    console.log(communityAdminRole, "nytj");
+    // console.log(communityAdminRole, "nytj");
     const newCommunity = new Community({
       name: req.body.name,
       slug: req.body.name.toLowerCase(),
